@@ -63,8 +63,24 @@ const updateTask = async(req,res)=>{
    }catch(e){
     res.status(400).json({Error:e.message})
    }
+}
 
+//Delete Task
+
+const DeleteTask = async (req,res)=>{
+    const {id} = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({Error:"delete id not valid"})
+    }
+
+try{
+    const Task = await TaskModel.findByIdAndDelete(id)
+    res.status(200).json({Task})
+}catch(e){
+    res.status(400).json({Error:e.message})
+}
 
 }
 
-module.exports = {CreateTask,getTask,singleTask,updateTask};
+module.exports = {CreateTask,getTask,singleTask,updateTask,DeleteTask};
