@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schemach;
+const Schema = mongoose.Schema;
 
 //creating schema
 const TaskSchema = new Schema(
     {
     title:{
-        type: String,
+        type: "string",
         require:true
     },
     description:{
-        type:string,
+        type:"string",
         require:true
     }
 },
